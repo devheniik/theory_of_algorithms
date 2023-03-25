@@ -28,6 +28,10 @@ def sum_diagonal_elements(arr):
     return diagonal_sum
 
 
+def enter_array_manually(n):
+    return [[int(input("Enter element [" + str(i) + "][" + str(j) + "]: ")) for j in range(n)] for i in range(n)]
+
+
 def main():
     n = int(input("Enter the size of the array: "))
     option = input(
@@ -39,7 +43,7 @@ def main():
         filename = input("Enter the filename: ")
         arr = read_array_from_file(filename)
     elif option == '3':
-        arr = [[int(input("Enter element [" + str(i) + "][" + str(j) + "]: ")) for j in range(n)] for i in range(n)]
+        arr = enter_array_manually(n)
         write_array_to_file(arr, 'array.txt')
     else:
         print("Invalid option")
