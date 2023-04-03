@@ -113,8 +113,7 @@ def find_path(graph, start, end):
     return path
 
 
-def max_cars(graph, path):
-    max_cars = 400
+def max_cars(graph, path, max_cars = 400):
     for i in range(len(path) - 1):
         edge = graph[path[i]][path[i+1]]
         if edge['is_direct']:
@@ -127,6 +126,7 @@ end = "Музей однієї вулиці"
 
 
 result = max_cars(graph,
-                  find_path_dijkstra(graph, start, end)
-                  )
+                  find_path_dijkstra(graph, start, end),
+                  int(input("Enter max quantity for hour: "))
+                )
 print(f"Maximum number of cars that can reach the {end} from {start}: {result}")
