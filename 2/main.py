@@ -3,10 +3,11 @@ import heapq
 graph = {
     'Червоний університет': {'Михайлівський собор': {'is_direct': False, 'weight': 1.4}, 'Київська політехніка': {'is_direct': False, 'weight': 2.1}},
     'Андріївська церква': {'Михайлівський собор': {'is_direct': True, 'weight': 1.1}},
-    'Михайлівський собор': {'Софія київська': {'is_direct': True, 'weight': 1.2}, 'Фунікулер': {'is_direct': False, 'weight': 0.8}},
+    'Михайлівський собор': {'Софія київська': {'is_direct': True, 'weight': 1.2}, 'Фунікулер(нижня станція)': {'is_direct': False, 'weight': 0.8}},
     'Золоті ворота': {'Фонтан на Хрещатику': {'is_direct': True, 'weight': 1.8}},
     'Лядські ворота': {'Михайлівський собор': {'is_direct': True, 'weight': 1.6}},
-    'Фунікулер': {'Музей однієї вулиці': {'is_direct': True, 'weight': 0.4}},
+    'Фунікулер(нижня станція)': {'Музей однієї вулиці': {'is_direct': True, 'weight': 0.4}, 'Фунікулер(верхня станція)': {'is_direct': False, 'weight': 0.2}},
+    'Фунікулер(верхня станція)': {'Софія київська': {'is_direct': True, 'weight': 0.8}},
     'Київська політехніка': {},
     'Фонтан на Хрещатику': {'Національна філармонія': {'is_direct': False, 'weight': 0.5}},
     'Софія київська': {'Лядські ворота': {'is_direct': True, 'weight': 0.8}},
@@ -126,7 +127,7 @@ end = "Музей однієї вулиці"
 
 
 result = max_cars(graph,
-                  find_path_dijkstra(graph, start, end),
+                  find_path_terri(graph, start, end),
                   int(input("Enter max quantity for hour: "))
                 )
 print(f"Maximum number of cars that can reach the {end} from {start}: {result}")
